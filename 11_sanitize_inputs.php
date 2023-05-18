@@ -1,8 +1,12 @@
 <?php
 
     if(isset($_POST['submit'])) {
+        //preferred way to sanitize post variables to prevent injected scripts and such
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
         $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_SPECIAL_CHARS);
+        
+        // $name = filter_var($_POST['name'], FILTER_SANITIZE_SPECIAL_CHARS); // another sanitizing option
+        
         echo $name;
     }
 
