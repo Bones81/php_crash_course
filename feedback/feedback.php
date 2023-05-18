@@ -4,7 +4,25 @@
   $sql = 'SELECT * FROM feedback';
   $result = mysqli_query($conn, $sql);
   $feedback = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+  if(isset($_POST['submit'])) {
+    // Get id
+    $id = $_POST['id'];
+    // echo $id;
+
+    // Delete from database
+    $sql = "DELETE FROM feedback WHERE id = $id";
+
+    if(mysqli_query($conn, $sql)) {
+      // Success
+      header('Location: feedback.php');
+    } else {
+      // Error
+      echo 'Error: ' . mysqli_error($conn);
+    }
+  }
 ?>
+
     <h2>Past Feedback</h2>
 
     <?php if(empty($feedback)): ?>
@@ -19,6 +37,10 @@
           By <?php echo $item['name']; ?> on <?php echo $item['date']; ?>
 
         </div>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+          <input hidden type="text" name="id" value="<?php echo $item['id']; ?>">
+          <input type="submit" value="Delete Post" name="submit">
+        </form>
       </div>
      </div>
 
