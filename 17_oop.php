@@ -53,6 +53,8 @@ $user3 = new User('Jeff','pretzels@soft.com','Arty');
 // Inheritance
 
 class Employee extends User {
+    public $title;
+
     public function __construct($name, $email, $password, $title) {
         parent::__construct($name, $email, $password);
         $this->title = $title;
