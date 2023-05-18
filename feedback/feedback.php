@@ -1,22 +1,44 @@
 <?php include 'inc/header.php'; ?>
    
-    <h2>Feedback</h2>
+<?php 
+  $feedback = [
+    [
+      'id' => '1',
+      'name' => 'Emilia Sotelo',
+      'email' => 'emilia@tmail.com',
+      'body' => 'Nathan\'s voice might be higher than mine.'
+    ],
+    [
+      'id' => '2',
+      'name' => 'Ivory Bodnar',
+      'email' => 'ivory@tmail.com',
+      'body' => 'Nathan helped me feel good about going back to Hong Kong.'
+    ],
+    [
+      'id' => '3',
+      'name' => 'Sean Gabel',
+      'email' => 'sean@tmail.com',
+      'body' => 'Let\'s have a Disney day!'
+    ],
+  ]
+?>
+    <h2>Past Feedback</h2>
 
-    <div class="card my-3">
-     <div class="card-body">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!
-     </div>
-   </div>
+    <?php if(empty($feedback)): ?>
+      <p class="lead mt3">There is no feedback.</p>
+    <?php endif;?>
 
-   <div class="card my-3">
-     <div class="card-body">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!
+    <?php foreach($feedback as $item): ?>
+      <div class="card my-3 w-75">
+      <div class="card-body text-center">
+        <?php echo $item['body']; ?>
+        <div class="text-secondary mt2">
+          By <?php echo $item['name']; ?>
+        </div>
+      </div>
      </div>
-   </div>
 
-   <div class="card my-3">
-     <div class="card-body">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta molestias animi earum eos dolorem repellat a quibusdam, aperiam vero repellendus voluptatibus natus deserunt sed doloribus inventore, totam labore maxime perferendis!
-     </div>
-   </div>
+    <?php endforeach; ?>
+
+
    <?php include 'inc/footer.php'; ?>
